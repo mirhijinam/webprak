@@ -1,6 +1,7 @@
 # Книжный магазин
 
-![Книжный магазин  Диаграмма БД](https://user-images.githubusercontent.com/59884652/228242525-5c518820-b3af-47f0-a9f0-f73c02736ed1.png)
+![Bookstore  Диаграмма БД](https://user-images.githubusercontent.com/59884652/228244128-3fd53a9a-ccca-440a-9a53-2c18231c223d.png)
+
 
 
 ## Описание страниц
@@ -64,7 +65,8 @@
 * Строка ввода информации о книгах
 * Кнопка для сохранения заказа в БД
 
-![Книжный магазин  Диаграмма работы сайта](https://user-images.githubusercontent.com/59884652/228242961-0d7780c4-6b90-49ec-bee0-48dea3619778.png)
+![Bookstore  Диаграмма работы сайта](https://user-images.githubusercontent.com/59884652/228244677-08e2ce8e-445b-48a1-8bf1-1bca4a56191e.png)
+
 
 
 
