@@ -1,4 +1,4 @@
-package ru.msu.cmc.webprak.models;
+package ru.msu.cmc.webprak;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
