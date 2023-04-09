@@ -1,7 +1,6 @@
 # Книжный магазин
 
-<img width="908" alt="Снимок экрана 2023-04-10 в 12 04 50 AM" src="https://user-images.githubusercontent.com/59884652/230796453-70058ca4-dcba-47f4-8173-8af13c33bc22.png">
-
+<img width="1120" alt="Снимок экрана 2023-04-10 в 12 06 19 AM" src="https://user-images.githubusercontent.com/59884652/230796506-8410f064-3f58-4fbd-ac6b-61d1b1e824c1.png">
 
 
 
