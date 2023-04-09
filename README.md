@@ -1,6 +1,7 @@
 # Книжный магазин
 
-![Bookstore  Диаграмма БД](https://user-images.githubusercontent.com/59884652/228244128-3fd53a9a-ccca-440a-9a53-2c18231c223d.png)
+<img width="908" alt="Снимок экрана 2023-04-10 в 12 04 50 AM" src="https://user-images.githubusercontent.com/59884652/230796453-70058ca4-dcba-47f4-8173-8af13c33bc22.png">
+
 
 
 
