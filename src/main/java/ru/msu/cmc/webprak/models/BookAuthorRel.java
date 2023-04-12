@@ -22,7 +22,7 @@ public class BookAuthorRel implements CommonEntity<Long> {
     @NonNull
     private Book bookId;
 
-    @OneToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "author_id", nullable = false)
     @NonNull
     private Author authorId;
