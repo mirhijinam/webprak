@@ -11,8 +11,7 @@ import ru.msu.cmc.webprak.models.Book;
 
 public interface BookDAO extends CommonDAO<Book, Long> {
     Collection searchBooks(Filter filter) throws SQLException;
-    public Collection getAllBooks() throws SQLException;
-    public Collection getAllBooksByOrderId(Long orderId) throws SQLException;
+    Collection getAllBooksByOrderId(Long orderId) throws SQLException;
 
     @Builder
     @Getter
@@ -25,7 +24,7 @@ public interface BookDAO extends CommonDAO<Book, Long> {
         private String genre;
     }
 
-    static ClientDAO.Filter.FilterBuilder getFilterBuilder() {
-        return ClientDAO.Filter.builder();
+    static BookDAO.Filter.FilterBuilder getFilterBuilder() {
+        return BookDAO.Filter.builder();
     }
 }
