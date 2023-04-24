@@ -1,10 +1,13 @@
 package ru.msu.cmc.webprak.DAO;
 
+
 import ru.msu.cmc.webprak.models.CommonEntity;
 
 import java.util.Collection;
 
+
 public interface CommonDAO<T extends CommonEntity<ID>, ID> {
+
     T getById(ID id);
 
     Collection<T> getAll();

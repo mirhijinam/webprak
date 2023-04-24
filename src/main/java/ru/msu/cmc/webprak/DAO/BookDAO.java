@@ -4,14 +4,18 @@ package ru.msu.cmc.webprak.DAO;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.sql.SQLException;
-import java.util.Collection;
-
 import ru.msu.cmc.webprak.models.Book;
+import ru.msu.cmc.webprak.models.Genre;
+import ru.msu.cmc.webprak.models.Author;
+
+import java.util.List;
+
 
 public interface BookDAO extends CommonDAO<Book, Long> {
-    Collection searchBooks(Filter filter) throws SQLException;
-    Collection getAllBooksByOrderId(Long orderId) throws SQLException;
+
+    List<Book> searchBooks(Filter filter);
+    List<Genre> getBookGenres(Long bookId);
+    List<Author> getBookAuthors(Long bookId);
 
     @Builder
     @Getter

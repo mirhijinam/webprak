@@ -5,10 +5,8 @@ import jakarta.persistence.*;
 import java.util.Objects;
 import lombok.*;
 
-
-
 @Entity
-@Table(name = "client_address_rel")
+@Table(name = "client_city_rel")
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
@@ -21,14 +19,14 @@ public class ClientAddressRel implements CommonEntity<Long> {
     private Long id;
 
     @OneToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "address_id", nullable = false)
+    @JoinColumn(name = "client_id", nullable = false)
     @NonNull
-    private Book addressId;
+    private Client client;
 
     @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "city_id", nullable = false)
     @NonNull
-    private Author cityId;
+    private City city;
 
     @Column(name = "street_name", nullable = false)
     @NonNull
@@ -40,8 +38,8 @@ public class ClientAddressRel implements CommonEntity<Long> {
         if (o == null || getClass() != o.getClass()) return false;
         ClientAddressRel other = (ClientAddressRel) o;
         return Objects.equals(id, other.id)
-                && Objects.equals(addressId, other.addressId)
-                && Objects.equals(cityId, other.cityId)
+                && client.equals(other.client)
+                && city.equals(other.city)
                 && bookName.equals(other.bookName);
     }
 }

@@ -1,23 +1,24 @@
 package ru.msu.cmc.webprak.DAO.impl;
 
 
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import ru.msu.cmc.webprak.DAO.CommonDAO;
 import ru.msu.cmc.webprak.models.CommonEntity;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+
 import java.io.Serializable;
 import java.util.Collection;
 
+
 @Repository
 public abstract class CommonDAOImpl<T extends CommonEntity<ID>, ID extends Serializable> implements CommonDAO<T, ID> {
+
     protected SessionFactory sessionFactory;
 
     protected Class<T> persistentClass;

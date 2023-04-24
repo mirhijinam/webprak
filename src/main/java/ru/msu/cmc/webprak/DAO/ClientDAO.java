@@ -4,16 +4,20 @@ package ru.msu.cmc.webprak.DAO;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.util.Collection;
-import java.sql.SQLException;
+import org.springframework.data.util.Pair;
 
 import ru.msu.cmc.webprak.models.Client;
+import ru.msu.cmc.webprak.models.OrderHistory;
+import ru.msu.cmc.webprak.models.City;
+
+import java.util.List;
+
 
 public interface ClientDAO extends CommonDAO<Client, Long> {
 
-    Collection searchClients(Filter filter) throws SQLException;
-    Collection getAllClients() throws SQLException;
-    Collection getAllOrdersByClientId(Long clientId) throws SQLException;
+    List<Client> searchClients(Filter filter);
+    List<OrderHistory> getOrderHistory(Long clientId);
+    Pair<City, String> getClientCityAndStreet(Long clientId);
 
     @Builder
     @Getter
@@ -21,9 +25,9 @@ public interface ClientDAO extends CommonDAO<Client, Long> {
         private Long id;
         private String name;
         private String surname;
-        private String phone;
-        private String mail;
         private String city;
+        private String phone;
+        private String email;
     }
 
     static Filter.FilterBuilder getFilterBuilder() {
