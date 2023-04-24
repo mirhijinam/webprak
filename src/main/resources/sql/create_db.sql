@@ -44,9 +44,9 @@ create table if not exists "order" (
     price               money not null
 );
 
-create table if not exists client_address_rel (
+create table if not exists client_city_rel (
     id                  serial primary key,
-    address_id          integer references client(address_id),
+    client_id          integer references client(client_id),
     city_id             integer references city(city_id),
     street_name         text not null
 );
