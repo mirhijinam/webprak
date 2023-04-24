@@ -1,8 +1,11 @@
 package ru.msu.cmc.webprak.models;
 
-import jakarta.persistence.*;
-import java.util.Objects;
+
 import lombok.*;
+
+import jakarta.persistence.*;
+
+import java.util.Objects;
 
 
 @Entity
@@ -12,6 +15,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @Data
 public class BookAuthorRel implements CommonEntity<Long> {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, columnDefinition = "serial")
@@ -20,12 +24,12 @@ public class BookAuthorRel implements CommonEntity<Long> {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "book_id", nullable = false)
     @NonNull
-    private Book bookId;
+    private Book book;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "author_id", nullable = false)
     @NonNull
-    private Author authorId;
+    private Author author;
 
     @Override
     public boolean equals(Object o) {
@@ -33,7 +37,7 @@ public class BookAuthorRel implements CommonEntity<Long> {
         if (o == null || getClass() != o.getClass()) return false;
         BookAuthorRel other = (BookAuthorRel) o;
         return Objects.equals(id, other.id)
-                && Objects.equals(bookId, other.bookId)
-                && Objects.equals(authorId, other.authorId);
+                && book.equals(other.book)
+                && author.equals(other.author);
     }
 }

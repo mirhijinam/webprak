@@ -1,8 +1,11 @@
 package ru.msu.cmc.webprak.models;
 
-import jakarta.persistence.*;
-import java.util.Objects;
+
 import lombok.*;
+
+import jakarta.persistence.*;
+
+import java.util.Objects;
 
 
 @Entity
@@ -12,6 +15,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @Data
 public class Client implements CommonEntity<Long> {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "client_id", nullable = false, columnDefinition = "serial")
@@ -29,7 +33,6 @@ public class Client implements CommonEntity<Long> {
     private String mail;
 
     @Column(name = "phone", nullable = false, columnDefinition = "varchar")
-    @NonNull
     private String phone;
 
     @Override

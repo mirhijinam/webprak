@@ -1,11 +1,17 @@
 package ru.msu.cmc.webprak.models;
 
+
+import lombok.*;
+
 import com.fasterxml.jackson.databind.JsonNode;
+
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+
 import jakarta.persistence.*;
+
 import java.util.Objects;
-import lombok.*;
+
 
 
 @Entity
@@ -15,6 +21,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @Data
 public class Order implements CommonEntity<Long> {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id", nullable = false, columnDefinition = "serial")

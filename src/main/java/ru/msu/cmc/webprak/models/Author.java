@@ -1,8 +1,11 @@
 package ru.msu.cmc.webprak.models;
 
-import jakarta.persistence.*;
-import java.util.Objects;
+
 import lombok.*;
+
+import jakarta.persistence.*;
+
+import java.util.Objects;
 
 
 @Entity
@@ -14,6 +17,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @Data
 public class Author implements CommonEntity<Long> {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "author_id", nullable = false, columnDefinition = "serial")

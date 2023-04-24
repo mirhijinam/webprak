@@ -1,9 +1,11 @@
 package ru.msu.cmc.webprak.models;
 
-import jakarta.persistence.*;
-import java.util.Objects;
+
 import lombok.*;
 
+import jakarta.persistence.*;
+
+import java.util.Objects;
 
 
 @Entity
@@ -22,12 +24,12 @@ public class OrderingBookRel implements CommonEntity<Long> {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "order_id", nullable = false)
     @NonNull
-    private Book orderId;
+    private Order order;
 
     @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "book_id", nullable = false)
     @NonNull
-    private Book bookId;
+    private Book book;
 
     @Column(name = "amount", nullable = false)
     @NonNull
@@ -43,8 +45,8 @@ public class OrderingBookRel implements CommonEntity<Long> {
         if (o == null || getClass() != o.getClass()) return false;
         OrderingBookRel other = (OrderingBookRel) o;
         return Objects.equals(id, other.id)
-                && Objects.equals(orderId, other.orderId)
-                && Objects.equals(bookId, other.bookId)
+                && order.equals(other.order)
+                && book.equals(other.book)
                 && amount.equals(other.amount)
                 && total_cost.equals(other.total_cost);
     }

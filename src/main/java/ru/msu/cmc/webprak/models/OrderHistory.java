@@ -1,8 +1,11 @@
 package ru.msu.cmc.webprak.models;
 
-import jakarta.persistence.*;
-import java.util.Objects;
+
 import lombok.*;
+
+import jakarta.persistence.*;
+
+import java.util.Objects;
 
 
 @Entity
@@ -12,6 +15,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @Data
 public class OrderHistory implements CommonEntity<Long> {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, columnDefinition = "serial")
@@ -20,12 +24,12 @@ public class OrderHistory implements CommonEntity<Long> {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "client_id", nullable = false)
     @NonNull
-    private Client clientId;
+    private Client client;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "order_id", nullable = false)
     @NonNull
-    private Order orderId;
+    private Order order;
 
     @Override
     public boolean equals(Object o) {
@@ -33,7 +37,7 @@ public class OrderHistory implements CommonEntity<Long> {
         if (o == null || getClass() != o.getClass()) return false;
         OrderHistory other = (OrderHistory) o;
         return Objects.equals(id, other.id)
-                && Objects.equals(clientId, other.clientId)
-                && Objects.equals(orderId, other.orderId);
+                && client.equals(other.client)
+                && order.equals(other.order);
     }
 }

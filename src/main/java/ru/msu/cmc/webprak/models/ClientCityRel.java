@@ -1,9 +1,12 @@
 package ru.msu.cmc.webprak.models;
 
 
-import jakarta.persistence.*;
-import java.util.Objects;
 import lombok.*;
+
+import jakarta.persistence.*;
+
+import java.util.Objects;
+
 
 @Entity
 @Table(name = "client_city_rel")
@@ -11,7 +14,7 @@ import lombok.*;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Data
-public class ClientAddressRel implements CommonEntity<Long> {
+public class ClientCityRel implements CommonEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,16 +33,16 @@ public class ClientAddressRel implements CommonEntity<Long> {
 
     @Column(name = "street_name", nullable = false)
     @NonNull
-    private String bookName;
+    private String streetName;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ClientAddressRel other = (ClientAddressRel) o;
+        ClientCityRel other = (ClientCityRel) o;
         return Objects.equals(id, other.id)
                 && client.equals(other.client)
                 && city.equals(other.city)
-                && bookName.equals(other.bookName);
+                && streetName.equals(other.streetName);
     }
 }
