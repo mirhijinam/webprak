@@ -95,3 +95,4 @@ public class BookDAOImpl extends CommonDAOImpl<Book, Long> implements BookDAO {
         return ret;
     }
 }
+

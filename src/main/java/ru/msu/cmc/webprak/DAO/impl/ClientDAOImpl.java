@@ -88,3 +88,4 @@ public class ClientDAOImpl extends CommonDAOImpl<Client, Long> implements Client
         return null;
     }
 }
+
