@@ -42,10 +42,10 @@ public class BookDAOImpl extends CommonDAOImpl<Book, Long> implements BookDAO {
                 predicates.add(builder.equal(bookRoot.get("id"), filter.getId()));
 
             if (filter.getName() != null)
-                predicates.add(builder.like(bookRoot.get("name"), "%" + filter.getName() + "%"));
+                predicates.add(builder.like(bookRoot.get("bookName"), "%" + filter.getName() + "%"));
 
             if (filter.getPrice() != null)
-                predicates.add(builder.like(bookRoot.get("price"), "%" + filter.getPrice() + "%"));
+                predicates.add(builder.equal(bookRoot.get("price"), filter.getPrice()));
 
             if (filter.getIsAvailable() != null && !filter.getIsAvailable().isEmpty()) {
                 predicates.add(builder.like(bookRoot.get("isAvailable"), "%" + filter.getIsAvailable() + "%"));
@@ -55,7 +55,7 @@ public class BookDAOImpl extends CommonDAOImpl<Book, Long> implements BookDAO {
                 Subquery<Long> bookAuthorRelSubquery = criteriaQuery.subquery(Long.class);
                 Root<BookAuthorRel> bookAuthorRelRoot = bookAuthorRelSubquery.from(BookAuthorRel.class);
                 bookAuthorRelSubquery.select(bookAuthorRelRoot.get("book").get("id"))
-                        .where(bookAuthorRelRoot.get("author").get("id").in(filter.getAuthor()));
+                        .where(bookAuthorRelRoot.get("author").get("authorName").in(filter.getAuthor()));
                 predicates.add(bookRoot.get("id").in(bookAuthorRelSubquery));
             }
 
@@ -63,9 +63,12 @@ public class BookDAOImpl extends CommonDAOImpl<Book, Long> implements BookDAO {
                 Subquery<Long> bookGenreRelSubquery = criteriaQuery.subquery(Long.class);
                 Root<BookGenreRel> bookGenreRelRoot = bookGenreRelSubquery.from(BookGenreRel.class);
                 bookGenreRelSubquery.select(bookGenreRelRoot.get("book").get("id"))
-                        .where(bookGenreRelRoot.get("genre").get("id").in(filter.getAuthor()));
+                        .where(bookGenreRelRoot.get("genre").get("genreName").in(filter.getGenre()));
                 predicates.add(bookRoot.get("id").in(bookGenreRelSubquery));
             }
+
+            if (!predicates.isEmpty())
+                criteriaQuery.where(predicates.toArray(new Predicate[0]));
 
             return session.createQuery(criteriaQuery).getResultList();
         }

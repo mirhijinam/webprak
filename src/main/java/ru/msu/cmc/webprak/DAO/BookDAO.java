@@ -23,7 +23,7 @@ public interface BookDAO extends CommonDAO<Book, Long> {
         private Long id;
         private String name;
         private String isAvailable;
-        private String price;
+        private Integer price;
         private String author;
         private String genre;
     }

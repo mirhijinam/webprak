@@ -10,25 +10,29 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "client_city_rel")
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
-@Data
+@AllArgsConstructor
 public class ClientCityRel implements CommonEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, columnDefinition = "serial")
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @OneToOne(fetch = FetchType.EAGER, optional = false)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id", nullable = false)
     @NonNull
+    @ToString.Exclude
     private Client client;
 
-    @OneToOne(fetch = FetchType.EAGER, optional = false)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "city_id", nullable = false)
     @NonNull
+    @ToString.Exclude
     private City city;
 
     @Column(name = "street_name", nullable = false)

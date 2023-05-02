@@ -16,32 +16,30 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "book")
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
-@Data
+@AllArgsConstructor
 public class Book implements CommonEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "book_id", nullable = false, columnDefinition = "serial")
+    @Column(name = "book_id", nullable = false)
     private Long id;
 
     @Column(name = "book_name", nullable = false)
     @NonNull
     private String bookName;
 
-    @JdbcTypeCode(SqlTypes.JSON)
-    @Column(name = "publication_info", columnDefinition = "jsonb")
-    private JsonNode publicationInfo;
-
-    @Column(name = "price", nullable = false, columnDefinition = "price")
+    @Column(name = "price", nullable = false)
     @NonNull
-    private Double price;
+    private Integer price;
 
-    @Column(name = "is_available", nullable = false, columnDefinition = "boolean")
+    @Column(name = "is_available", nullable = false)
     @NonNull
-    private Boolean isAvailable;
+    private String isAvailable;
 
     @Column(name = "num_of_copies", nullable = false)
     @NonNull
@@ -54,7 +52,7 @@ public class Book implements CommonEntity<Long> {
         Book other = (Book) o;
         return Objects.equals(id, other.id)
             && bookName.equals(other.bookName)
-                && publicationInfo.equals(other.publicationInfo)
+//                && publicationInfo.equals(other.publicationInfo)
                 && price.equals(other.price)
                 && isAvailable.equals(other.isAvailable)
                 && numOfCopies.equals(other.numOfCopies);

@@ -10,15 +10,17 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "genre")
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
-@Data
+@AllArgsConstructor
 public class Genre implements CommonEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "genre_id", nullable = false, columnDefinition = "serial")
+    @Column(name = "genre_id", nullable = false)
     private Long id;
 
     @Column(name = "genre_name", nullable = false)

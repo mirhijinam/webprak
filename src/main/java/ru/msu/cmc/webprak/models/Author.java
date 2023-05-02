@@ -10,17 +10,17 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "author")
-@Setter
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
+@Setter
+@ToString
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
-@Data
+@AllArgsConstructor
 public class Author implements CommonEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "author_id", nullable = false, columnDefinition = "serial")
+    @Column(name = "author_id", nullable = false)
     private Long id;
 
     @Column(name = "author_name", nullable = false)

@@ -10,15 +10,17 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "client")
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
-@Data
+@AllArgsConstructor
 public class Client implements CommonEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "client_id", nullable = false, columnDefinition = "serial")
+    @Column(name = "client_id", nullable = false)
     private Long id;
 
     @Column(name = "client_name", nullable = false)
@@ -27,12 +29,13 @@ public class Client implements CommonEntity<Long> {
 
     @Column(name = "address_id", nullable = false)
     @NonNull
-    private Integer addressId;
+    private Long addressId;
 
-    @Column(name = "mail", nullable = true)
-    private String mail;
+    @Column(name = "mail")
+    private String email;
 
-    @Column(name = "phone", nullable = false, columnDefinition = "varchar")
+    @Column(name = "phone", nullable = false)
+    @NonNull
     private String phone;
 
     @Override
@@ -43,7 +46,7 @@ public class Client implements CommonEntity<Long> {
         return Objects.equals(id, other.id)
                 && Objects.equals(clientName, other.clientName)
                 && Objects.equals(addressId, other.addressId)
-                && Objects.equals(mail, other.mail)
+                && Objects.equals(email, other.email)
                 && Objects.equals(phone, other.phone);
     }
 }

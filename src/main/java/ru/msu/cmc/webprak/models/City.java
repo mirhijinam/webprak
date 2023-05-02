@@ -10,22 +10,24 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "city")
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
-@Data
+@AllArgsConstructor
 public class City implements CommonEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "city_id", nullable = false, columnDefinition = "serial")
+    @Column(name = "city_id", nullable = false)
     private Long id;
 
     @Column(name = "city_name", nullable = false)
     @NonNull
     private String cityName;
 
-    @Column(name = "delivery_days", nullable = false, columnDefinition = "interval")
+    @Column(name = "delivery_days", nullable = false)
     @NonNull
     private Integer deliveryDays;
 

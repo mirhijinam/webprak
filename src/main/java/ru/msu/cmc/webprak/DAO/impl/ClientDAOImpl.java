@@ -43,16 +43,16 @@ public class ClientDAOImpl extends CommonDAOImpl<Client, Long> implements Client
                 predicates.add(builder.equal(clientRoot.get("id"), filter.getId()));
 
             if (filter.getName() != null)
-                predicates.add(builder.like(clientRoot.get("name"), "%" + filter.getName() + "%"));
+                predicates.add(builder.like(clientRoot.get("clientName"), "%" + filter.getName() + "%"));
 
             if (filter.getSurname() != null)
-                predicates.add(builder.like(clientRoot.get("name"), "%" + filter.getSurname() + "%"));
+                predicates.add(builder.like(clientRoot.get("clientName"), "%" + filter.getSurname() + "%"));
 
             if (filter.getCity() != null && !filter.getCity().isEmpty()) {
                 Subquery<Long> clientCityRelSubquery = criteriaQuery.subquery(Long.class);
                 Root<ClientCityRel> clientCityRelRoot = clientCityRelSubquery.from(ClientCityRel.class);
                 clientCityRelSubquery.select(clientCityRelRoot.get("client").get("id"))
-                        .where(clientCityRelRoot.get("city").get("id").in(filter.getCity()));
+                        .where(clientCityRelRoot.get("city").get("cityName").in(filter.getCity()));
                 predicates.add(clientRoot.get("id").in(clientCityRelSubquery));
             }
 
@@ -62,6 +62,9 @@ public class ClientDAOImpl extends CommonDAOImpl<Client, Long> implements Client
             if (filter.getEmail() != null) {
                 predicates.add(builder.like(clientRoot.get("email"), "%" + filter.getEmail() + "%"));
             }
+
+            if (!predicates.isEmpty())
+                criteriaQuery.where(predicates.toArray(new Predicate[0]));
 
             return session.createQuery(criteriaQuery).getResultList();
         }
@@ -79,13 +82,25 @@ public class ClientDAOImpl extends CommonDAOImpl<Client, Long> implements Client
     }
 
     @Override
-    public Pair<City, String> getClientCityAndStreet(Long clientId) {
-        for (ClientCityRel clientCityRel : clientCityRelDAO.getAll()) {
+    public List<ClientCityRel> getClientCityRel(Long clientId) {
+        List<ClientCityRel> ret = new ArrayList<>();
+        for(ClientCityRel clientCityRel: clientCityRelDAO.getAll()) {
             if (Objects.equals(clientCityRel.getClient().getId(), clientId)) {
-                return Pair.of(clientCityRel.getCity(), clientCityRel.getStreetName());
+                ret.add(clientCityRel);
             }
         }
-        return null;
+        return ret;
+    }
+
+    @Override
+    public List<Pair<City, String>> getClientCityAndStreet(Long clientId) {
+        List<Pair<City, String>> ret = new ArrayList<>();
+        for (ClientCityRel clientCityRel : clientCityRelDAO.getAll()) {
+            if (Objects.equals(clientCityRel.getClient().getId(), clientId)) {
+                ret.add(Pair.of(clientCityRel.getCity(), clientCityRel.getStreetName()));
+            }
+        }
+        return ret;
     }
 }
 

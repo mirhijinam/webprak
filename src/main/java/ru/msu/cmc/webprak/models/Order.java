@@ -1,25 +1,26 @@
 package ru.msu.cmc.webprak.models;
 
 
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.*;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
+import org.hibernate.annotations.Type;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
 import java.util.Objects;
 
 
 
 @Entity
-@Table(name = "order")
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "`order`")
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
-@Data
+@AllArgsConstructor
 public class Order implements CommonEntity<Long> {
 
     @Id
@@ -29,24 +30,50 @@ public class Order implements CommonEntity<Long> {
 
     @Column(name = "creation_data", nullable = false, columnDefinition = "date")
     @NonNull
-    private Long creationData;
+    private Date creationData;
 
     @Column(name = "delivery_data", nullable = false, columnDefinition = "date")
     @NonNull
-    private Long deliveryData;
+    private Date deliveryData;
 
-    @JdbcTypeCode(SqlTypes.JSON)
-    @Column(name = "delivery_terms", columnDefinition = "jsonb")
-    private JsonNode publicationInfo;
+//    @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+//    public record OrderInfo(
+//            boolean fragile,
+//            boolean leave_at_the_door
+//    ) implements Serializable {
+//        @JsonCreator
+//        public OrderInfo(
+//                @JsonProperty("fragile") boolean fragile,
+//                @JsonProperty("leave_at_the_door") boolean leave_at_the_door) {
+//            this.fragile = fragile;
+//            this.leave_at_the_door = leave_at_the_door;
+//        }
+//    }
 
+    public static class OrderInfo {
+        private String fragile;
+        private boolean atTheDoor;
+        public void setFragile(String fragile) {
+            this.fragile = fragile;
+        }
+        public void setAtTheDoor(boolean atTheDoor) {
+            this.atTheDoor = atTheDoor;
+        }
+    }
+
+    public enum OrderStatus {
+        NEW,
+        IN_PROGRESS,
+        FINISHED
+    }
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     @NonNull
-    private OrderStatus status;
+    private Order.OrderStatus orderStatus;
 
-    @Column(name = "price", nullable = false, columnDefinition = "price")
+    @Column(name = "price", nullable = false)
     @NonNull
-    private Double price;
+    private Integer price;
 
     @Override
     public boolean equals(Object o) {
@@ -56,8 +83,7 @@ public class Order implements CommonEntity<Long> {
         return Objects.equals(id, other.id)
                 && creationData.equals(other.creationData)
                 && deliveryData.equals(other.deliveryData)
-                && publicationInfo.equals(other.publicationInfo)
-                && status.equals(other.status)
+                && orderStatus.equals(other.orderStatus)
                 && price.equals(other.price);
     }
 }

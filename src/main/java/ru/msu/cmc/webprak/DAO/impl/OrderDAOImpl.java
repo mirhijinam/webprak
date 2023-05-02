@@ -38,8 +38,8 @@ public class OrderDAOImpl extends CommonDAOImpl<Order, Long> implements OrderDAO
             if (filter.getOrderId() != null)
                 predicates.add(builder.equal(orderRoot.get("id"), filter.getOrderId()));
 
-            if (filter.getStatus() != null)
-                predicates.add(builder.equal(orderRoot.get("status"), filter.getStatus()));
+            if (filter.getOrderStatus() != null)
+                predicates.add(builder.equal(orderRoot.get("orderStatus"), filter.getOrderStatus()));
 
             if (filter.getPrice() != null)
                 predicates.add(builder.equal(orderRoot.get("price"), filter.getPrice()));
@@ -48,9 +48,12 @@ public class OrderDAOImpl extends CommonDAOImpl<Order, Long> implements OrderDAO
                 Subquery<Long> orderingBookRelSubquery = criteriaQuery.subquery(Long.class);
                 Root<OrderingBookRel> orderingBookRelRoot = orderingBookRelSubquery.from(OrderingBookRel.class);
                 orderingBookRelSubquery.select(orderingBookRelRoot.get("order").get("id"))
-                        .where(orderingBookRelRoot.get("book").get("id").in(filter.getBook()));
+                        .where(orderingBookRelRoot.get("book").get("bookName").in(filter.getBook()));
                 predicates.add(orderRoot.get("id").in(orderingBookRelSubquery));
             }
+            if (!predicates.isEmpty())
+                criteriaQuery.where(predicates.toArray(new Predicate[0]));
+
             return session.createQuery(criteriaQuery).getResultList();
         }
     }

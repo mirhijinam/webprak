@@ -10,10 +10,12 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "ordering_book_rel")
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
-@Data
+@AllArgsConstructor
 public class OrderingBookRel implements CommonEntity<Long> {
 
     @Id
@@ -21,14 +23,16 @@ public class OrderingBookRel implements CommonEntity<Long> {
     @Column(name = "id", nullable = false, columnDefinition = "serial")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id", nullable = false)
     @NonNull
+    @ToString.Exclude
     private Order order;
 
-    @OneToOne(fetch = FetchType.EAGER, optional = false)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "book_id", nullable = false)
     @NonNull
+    @ToString.Exclude
     private Book book;
 
     @Column(name = "amount", nullable = false)

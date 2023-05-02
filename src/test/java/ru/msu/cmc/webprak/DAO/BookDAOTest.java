@@ -7,7 +7,6 @@ import static ru.msu.cmc.webprak.models.Order.OrderStatus.*;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.util.Pair;
 import org.springframework.test.context.TestPropertySource;
 
 import ru.msu.cmc.webprak.models.*;
@@ -20,11 +19,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestPropertySource(locations = "classpath:application.properties")
-public class ClientDAOTest {
+public class BookDAOTest {
 
     @Autowired
     private AuthorDAO authorDAO;
@@ -51,101 +49,45 @@ public class ClientDAOTest {
     @Autowired
     private EntityManagerFactory entityManagerFactory;
 
-
-    @Test
-    void testUpdateClient() {
-        Client client = clientDAO.getById(1L);
-        assertNotNull(client);
-        client.setClientName("Бебра Бебров");
-        clientDAO.update(client);
-        client = clientDAO.getById(1L);
-        assertEquals("Бебра Бебров", client.getClientName());
-    }
-
-    @Test
-    void testDeleteClient() {
-        Client client = clientDAO.getById(3L);
-        assertNotNull(client);
-        clientDAO.delete(client);
-        client = clientDAO.getById(3L);
-        assertNull(client);
-    }
-
-    @Test
-    void testDeleteById() {
-        Client client = clientDAO.getById(2L);
-        assertNotNull(client);
-        clientDAO.deleteById(2L);
-        client = clientDAO.getById(2L);
-        assertNull(client);
-    }
-
     @Test
     void testGetBuilderFilter() {
-        ClientDAO.Filter filter = ClientDAO.getFilterBuilder().build();
+        BookDAO.Filter filter = BookDAO.getFilterBuilder().build();
         assertNotNull(filter);
     }
 
     @Test
-    void testSearchClients() {
-        ClientDAO.Filter.FilterBuilder filterBuilder1 = new ClientDAO.Filter.FilterBuilder();
-        List<Client> clientList1 = clientDAO.searchClients(filterBuilder1.build());
-        assertEquals(3, clientList1.size());
-
-        ClientDAO.Filter.FilterBuilder filterBuilder2 = new ClientDAO.Filter.FilterBuilder();
-        filterBuilder2.name("Петр");
-        filterBuilder2.surname("Петров");
-        filterBuilder2.id(2L);
-        filterBuilder2.city("ДС2");
-        filterBuilder2.phone("89999999992");
-        filterBuilder2.email("petrov@mail.ru");
-        List<Client> clientList2 = clientDAO.searchClients(filterBuilder2.build());
-        assertEquals(1, clientList2.size());
-
-        ClientDAO.Filter.FilterBuilder filterBuilder3 = new ClientDAO.Filter.FilterBuilder();
-        filterBuilder3.name("Петр");
-        List<Client> clientList3 = clientDAO.searchClients(filterBuilder3.build());
-        assertEquals(1, clientList3.size());
-
-        ClientDAO.Filter.FilterBuilder filterBuilder4 = new ClientDAO.Filter.FilterBuilder();
-        filterBuilder4.surname("Иванов");
-        List<Client> clientList4 = clientDAO.searchClients(filterBuilder4.build());
-        assertEquals(1, clientList4.size());
-
-        ClientDAO.Filter.FilterBuilder filterBuilder5 = new ClientDAO.Filter.FilterBuilder();
-        filterBuilder5.city("WrongCity");
-        List<Client> clientList5 = clientDAO.searchClients(filterBuilder5.build());
-        assertEquals(0, clientList5.size());
-
-        ClientDAO.Filter.FilterBuilder filterBuilder6 = new ClientDAO.Filter.FilterBuilder();
-        filterBuilder6.id(2L);
-        filterBuilder6.name("Иван");
-        List<Client> clientList6 = clientDAO.searchClients(filterBuilder6.build());
-        assertEquals(0, clientList6.size());
-
-        ClientDAO.Filter.FilterBuilder filterBuilder7 = new ClientDAO.Filter.FilterBuilder();
-        filterBuilder7.email("ivanov@mail.ru");
-        List<Client> clientList7 = clientDAO.searchClients(filterBuilder7.build());
-        assertEquals(1, clientList7.size());
+    void testGetBookGenres() {
+        Book book = bookDAO.getById(2L);
+        assertNotNull(book);
+        List<Genre> genreList = bookDAO.getBookGenres(book.getId());
+        assertEquals(1, genreList.size());
     }
 
     @Test
-    void getOrderHistory() {
-        Client client = clientDAO.getById(1L);
-        assertNotNull(client);
-        List<OrderHistory> orderHistoryList = clientDAO.getOrderHistory(client.getId());
-        assertEquals(1, orderHistoryList.size());
+    void testGetBookAuthors() {
+        Book book = bookDAO.getById(3L);
+        assertNotNull(book);
+        List<Author> authorList = bookDAO.getBookAuthors(book.getId());
+        assertEquals(1, authorList.size());
     }
 
     @Test
-    void getClientCityAndStreet() {
-        Client client = clientDAO.getById(1L);
-        assertNotNull(client);
-        List<ClientCityRel> clientCityRelList = clientDAO.getClientCityRel(client.getId());
-        assertEquals(1, clientCityRelList.size());
-        List<Pair<City, String>> cityAndStreet = clientDAO.getClientCityAndStreet(client.getId());
-        assertEquals(1, cityAndStreet.size());
+    void testSearchBooks() {
+        BookDAO.Filter.FilterBuilder filterBuilder = new BookDAO.Filter.FilterBuilder();
+        List<Book> bookList = bookDAO.searchBooks(filterBuilder.build());
+        assertEquals(3, bookList.size());
+
+        BookDAO.Filter.FilterBuilder filterBuilder1 = new BookDAO.Filter.FilterBuilder();
+        filterBuilder1.id(1L);
+        filterBuilder1.name("Книга1");
+        filterBuilder1.isAvailable("yes");
+        filterBuilder1.price(100);
+        filterBuilder1.author("Автор1");
+        filterBuilder1.genre("Жанр1");
+        List<Book> bookList1 = bookDAO.searchBooks(filterBuilder1.build());
+        assertEquals(1, bookList1.size());
     }
+
 
     @BeforeEach
     void beforeEach() throws ParseException {
