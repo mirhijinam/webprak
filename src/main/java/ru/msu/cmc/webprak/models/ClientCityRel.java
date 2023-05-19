@@ -26,13 +26,11 @@ public class ClientCityRel implements CommonEntity<Long> {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id", nullable = false)
     @NonNull
-    @ToString.Exclude
     private Client client;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "city_id", nullable = false)
     @NonNull
-    @ToString.Exclude
     private City city;
 
     @Column(name = "street_name", nullable = false)

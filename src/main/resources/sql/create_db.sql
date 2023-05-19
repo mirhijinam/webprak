@@ -1,11 +1,7 @@
 drop schema public cascade;
 create schema public;
 
-create table if not exists city (
-    city_id             serial primary key,
-    city_name           text not null,
-    delivery_days       integer not null
-);
+
 
 create table if not exists genre (
     genre_id            serial primary key,
@@ -20,9 +16,21 @@ create table if not exists author (
 create table if not exists client (
     client_id           serial primary key,
     client_name         text not null,
-    address_id          integer unique,
     mail                text,
     phone               varchar(11) not null
+);
+
+create table if not exists city (
+    city_id             serial primary key,
+    city_name           text not null,
+    delivery_days       integer not null
+);
+
+create table if not exists client_city_rel (
+    id                  serial primary key,
+    client_id           integer not null references client(client_id) on delete cascade,
+    city_id             integer not null references city(city_id) on delete cascade,
+    street_name         text not null
 );
 
 create table if not exists book (
@@ -41,12 +49,7 @@ create table if not exists "order" (
     price               integer not null
 );
 
-create table if not exists client_city_rel (
-    id                  serial primary key,
-    client_id           integer not null references client(client_id) on delete cascade,
-    city_id             integer not null references city(city_id) on delete cascade,
-    street_name         text not null
-);
+
 
 create table if not exists ordering_book_rel (
     id                  serial primary key,
@@ -73,3 +76,5 @@ create table if not exists order_history_rel (
     client_id           integer not null references client(client_id) on delete cascade,
     order_id            integer not null references "order"(order_id) on delete cascade
 );
+
+delete from client where client_id>3

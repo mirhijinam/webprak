@@ -15,11 +15,11 @@ import java.util.List;
 
 
 public interface ClientDAO extends CommonDAO<Client, Long> {
-
     List<Client> searchClients(Filter filter);
     List<OrderHistory> getOrderHistory(Long clientId);
     List<ClientCityRel> getClientCityRel(Long clientId);
     List<Pair<City, String>> getClientCityAndStreet(Long clientId);
+    City getCityByName(String name);
 
     @Builder
     @Getter

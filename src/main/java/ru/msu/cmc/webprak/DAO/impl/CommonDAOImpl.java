@@ -1,20 +1,18 @@
 package ru.msu.cmc.webprak.DAO.impl;
 
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
-
 import ru.msu.cmc.webprak.DAO.CommonDAO;
 import ru.msu.cmc.webprak.models.CommonEntity;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-
 import java.io.Serializable;
 import java.util.Collection;
-
 
 @Repository
 public abstract class CommonDAOImpl<T extends CommonEntity<ID>, ID extends Serializable> implements CommonDAO<T, ID> {
@@ -23,13 +21,13 @@ public abstract class CommonDAOImpl<T extends CommonEntity<ID>, ID extends Seria
 
     protected Class<T> persistentClass;
 
-    public CommonDAOImpl(Class<T> entityClass) {
+    public CommonDAOImpl(Class<T> entityClass){
         this.persistentClass = entityClass;
     }
 
     @Autowired
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+    public void setSessionFactory(LocalSessionFactoryBean sessionFactory) {
+        this.sessionFactory = sessionFactory.getObject();
     }
 
     @Override
@@ -42,23 +40,27 @@ public abstract class CommonDAOImpl<T extends CommonEntity<ID>, ID extends Seria
     @Override
     public Collection<T> getAll() {
         try (Session session = sessionFactory.openSession()) {
-            CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-            CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(persistentClass);
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<T> criteriaQuery = builder.createQuery(persistentClass);
             criteriaQuery.from(persistentClass);
             return session.createQuery(criteriaQuery).getResultList();
         }
     }
 
+
     @Override
-    public void save(T entity) {
+    public T save(T entity) {
+        T newEntity;
         try (Session session = sessionFactory.openSession()) {
             if (entity.getId() != null) {
                 entity.setId(null);
             }
             session.beginTransaction();
-            session.merge(entity);
+            newEntity = session.merge(entity);
+            session.flush();
             session.getTransaction().commit();
         }
+        return newEntity;
     }
 
     @Override
@@ -73,12 +75,15 @@ public abstract class CommonDAOImpl<T extends CommonEntity<ID>, ID extends Seria
     }
 
     @Override
-    public void update(T entity) {
+    public T update(T entity) {
+        T newEntity;
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
-            session.merge(entity);
+            newEntity = session.merge(entity);
+            session.flush();
             session.getTransaction().commit();
         }
+        return newEntity;
     }
 
     @Override

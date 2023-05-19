@@ -27,10 +27,6 @@ public class Client implements CommonEntity<Long> {
     @NonNull
     private String clientName;
 
-    @Column(name = "address_id", nullable = false)
-    @NonNull
-    private Long addressId;
-
     @Column(name = "mail")
     private String email;
 
@@ -45,8 +41,14 @@ public class Client implements CommonEntity<Long> {
         Client other = (Client) o;
         return Objects.equals(id, other.id)
                 && Objects.equals(clientName, other.clientName)
-                && Objects.equals(addressId, other.addressId)
                 && Objects.equals(email, other.email)
                 && Objects.equals(phone, other.phone);
+    }
+
+    public String getName() {
+        return clientName;
+    }
+    public Long getId() {
+        return id;
     }
 }

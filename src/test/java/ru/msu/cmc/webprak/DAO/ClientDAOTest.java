@@ -152,9 +152,9 @@ public class ClientDAOTest {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         List<Client> clientList = new ArrayList<>();
-        clientList.add(new Client(1L, "Иван Иванов", 1L, "ivanov@mail.ru", "89999999991"));
-        clientList.add(new Client(2L, "Петр Петров", 2L, "petrov@mail.ru", "89999999992"));
-        clientList.add(new Client(3L, "Павел Павлов", 3L, "pavlov@mail.ru", "89999999993"));
+        clientList.add(new Client(1L, "Иван Иванов", "ivanov@mail.ru", "89999999991"));
+        clientList.add(new Client(2L, "Петр Петров", "petrov@mail.ru", "89999999992"));
+        clientList.add(new Client(3L, "Павел Павлов", "pavlov@mail.ru", "89999999993"));
         clientDAO.saveCollection(clientList);
 
         List<City> cityList = new ArrayList<>();
@@ -170,17 +170,8 @@ public class ClientDAOTest {
         clientCityRelDAO.saveCollection(clientCityRelList);
 
         List<Order> orderList = new ArrayList<>();
-        Order.OrderInfo orderInfo1 = new Order.OrderInfo();
-        orderInfo1.setFragile("yes");
-        orderInfo1.setAtTheDoor(true);
         orderList.add(new Order(1L, dateFormat.parse("2022-01-01"), dateFormat.parse("2022-01-02"), FINISHED, 1000));
-        Order.OrderInfo orderInfo2 = new Order.OrderInfo();
-        orderInfo2.setFragile("no");
-        orderInfo2.setAtTheDoor(false);
         orderList.add(new Order(2L, dateFormat.parse("2022-02-02"), dateFormat.parse("2022-02-04"), IN_PROGRESS, 2000));
-        Order.OrderInfo orderInfo3 = new Order.OrderInfo();
-        orderInfo3.setFragile("wow");
-        orderInfo3.setAtTheDoor(true);
         orderList.add(new Order(3L, dateFormat.parse("2022-03-03"), dateFormat.parse("2022-03-07"), NEW, 3000));
         orderDAO.saveCollection(orderList);
 

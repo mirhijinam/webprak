@@ -6,6 +6,7 @@ import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Repository;
 import org.hibernate.Session;
 
+import ru.msu.cmc.webprak.DAO.CityDAO;
 import ru.msu.cmc.webprak.DAO.ClientDAO;
 import ru.msu.cmc.webprak.DAO.OrderHistoryDAO;
 import ru.msu.cmc.webprak.DAO.ClientCityRelDAO;
@@ -29,6 +30,8 @@ public class ClientDAOImpl extends CommonDAOImpl<Client, Long> implements Client
     private OrderHistoryDAO orderHistoryDAO = new OrderHistoryDAOImpl();
     @Autowired
     private ClientCityRelDAO clientCityRelDAO = new ClientCityRelDAOImpl();
+    @Autowired
+    private CityDAO cityDAO = new CityDAOImpl();
 
     @Override
     public List<Client> searchClients(Filter filter) {
@@ -101,6 +104,16 @@ public class ClientDAOImpl extends CommonDAOImpl<Client, Long> implements Client
             }
         }
         return ret;
+    }
+
+    @Override
+    public City getCityByName(String name) {
+        for (City city : cityDAO.getAll()) {
+            if (Objects.equals(city.getCityName(), name)) {
+                return city;
+            }
+        }
+        return null;
     }
 }
 

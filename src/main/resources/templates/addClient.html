@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Добавить клиента</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        .indent {
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{general :: page-header}"> </div>
+
+<div class="indent">
+    <h2>Добавить клиента</h2>
+    <form method="post" action="/addClient">
+        <div class="form-group">
+            <label for="name">ФИО:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="city">Город:</label>
+            <input type="text" class="form-control" id="city" name="city" required>
+<!--            <select id="city" name="city" size="1">-->
+<!--                <option value="ДС1">ДС1</option>-->
+<!--                <option value="ДС2">ДС2</option>-->
+<!--                <option value="ДС3">ДС3</option>-->
+<!--            </select>-->
+        </div>
+        <div class="form-group">
+            <label for="street">Улица:</label>
+            <input type="text" class="form-control" id="street" name="street" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Эл.почта:</label>
+            <input type="text" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Номер:</label>
+            <input type="text" class="form-control" id="phone" name="phone" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+</div>
+
+<div th:replace="general :: site-script"></div>
+
+</body>
+</html>

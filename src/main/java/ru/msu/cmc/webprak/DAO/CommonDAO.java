@@ -12,7 +12,7 @@ public interface CommonDAO<T extends CommonEntity<ID>, ID> {
 
     Collection<T> getAll();
 
-    void save(T entity);
+    T save(T entity);
 
     void saveCollection(Collection<T> entities);
 
@@ -20,5 +20,5 @@ public interface CommonDAO<T extends CommonEntity<ID>, ID> {
 
     void deleteById(ID id);
 
-    void update(T entity);
+    T update(T entity);
 }
