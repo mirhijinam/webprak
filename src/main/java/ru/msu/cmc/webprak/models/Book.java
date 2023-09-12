@@ -52,9 +52,12 @@ public class Book implements CommonEntity<Long> {
         Book other = (Book) o;
         return Objects.equals(id, other.id)
             && bookName.equals(other.bookName)
-//                && publicationInfo.equals(other.publicationInfo)
                 && price.equals(other.price)
                 && isAvailable.equals(other.isAvailable)
                 && numOfCopies.equals(other.numOfCopies);
+    }
+
+    public String getName() {
+        return bookName;
     }
 }

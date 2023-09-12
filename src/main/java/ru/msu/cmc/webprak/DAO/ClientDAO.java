@@ -6,10 +6,7 @@ import lombok.Getter;
 
 import org.springframework.data.util.Pair;
 
-import ru.msu.cmc.webprak.models.Client;
-import ru.msu.cmc.webprak.models.ClientCityRel;
-import ru.msu.cmc.webprak.models.OrderHistory;
-import ru.msu.cmc.webprak.models.City;
+import ru.msu.cmc.webprak.models.*;
 
 import java.util.List;
 
@@ -20,6 +17,8 @@ public interface ClientDAO extends CommonDAO<Client, Long> {
     List<ClientCityRel> getClientCityRel(Long clientId);
     List<Pair<City, String>> getClientCityAndStreet(Long clientId);
     City getCityByName(String name);
+    Client getClientById(Long id);
+    List<Order> getOrdersById(Long id);
 
     @Builder
     @Getter

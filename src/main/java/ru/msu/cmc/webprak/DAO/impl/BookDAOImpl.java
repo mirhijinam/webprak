@@ -97,5 +97,10 @@ public class BookDAOImpl extends CommonDAOImpl<Book, Long> implements BookDAO {
         }
         return ret;
     }
+
+    @Override
+    public Book getBookById(Long id) {
+        return super.getById(id);
+    }
 }
 

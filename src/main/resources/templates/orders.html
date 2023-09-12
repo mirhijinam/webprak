@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Список заказов</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        .indent {
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 20px;
+        }
+        .subtable {
+            background-color: #f0f0f0;
+        }
+        .subtable td {
+            border: 1px solid #cccccc;
+        }
+    </style>
+</head>
+
+<body>
+<div th:replace="general :: page-header"> </div>
+<div class="indent">
+    <form method="get" action="/addOrder">
+        <button id="addOrderButton" type="submit" class="btn btn-primary">Добавить заказ</button>
+    </form>
+    <br>
+    <form method="get" action="/searchOrder">
+        <div class="form-row">
+            <div class="col">
+                <input type="number" class="form-control" placeholder="ID" name="id">
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Поиск</button>
+            </div>
+        </div>
+    </form>
+    <br>
+    <table class="table table-bordered table-warning">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Статус</th>
+            <th scope="col">Дата создания</th>
+            <th scope="col">Дата доставки</th>
+            <th scope="col">Цена</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${orderList == null || orderList.isEmpty()}">
+            <td colspan="6">Заказы не найдены.</td>
+        </tr>
+        <tr th:each="ordr : ${orderList}">
+            <td>
+                <a th:href="'/orderDetails?orderId=' + ${ordr.getId()}">
+                    <span th:text="${ordr.getId()}"> </span>
+                </a>
+            </td>
+            <td>
+                <span th:text="${ordr.getOrderStatus()}"> </span>
+            </td>
+            <td>
+                <span th:text="${ordr.getCreationData()}"> </span>
+            </td>
+            <td>
+                <span th:text="${ordr.getDeliveryData()}"> </span>
+            </td>
+            <td>
+                <span th:text="${ordr.getPrice()}"> </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="~{general :: site-script}"></div>
+
+</body>
+</html>

@@ -54,4 +54,5 @@ public class OrderingBookRel implements CommonEntity<Long> {
                 && amount.equals(other.amount)
                 && total_cost.equals(other.total_cost);
     }
+
 }

@@ -51,7 +51,7 @@ public class OrderDAOTest {
 
     @Test
     void testGetBuilderFilter() {
-        ClientDAO.Filter filter = OrderDAO.getFilterBuilder().build();
+        OrderDAO.Filter filter = OrderDAO.getFilterBuilder().build();
         assertNotNull(filter);
     }
 
@@ -75,9 +75,9 @@ public class OrderDAOTest {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         List<Client> clientList = new ArrayList<>();
-        clientList.add(new Client(1L, "Иван Иванов", 1L, "ivanov@mail.ru", "89999999991"));
-        clientList.add(new Client(2L, "Петр Петров", 2L, "petrov@mail.ru", "89999999992"));
-        clientList.add(new Client(3L, "Павел Павлов", 3L, "pavlov@mail.ru", "89999999993"));
+        clientList.add(new Client(1L, "Иван Иванов", "ivanov@mail.ru", "89999999991"));
+        clientList.add(new Client(2L, "Петр Петров", "petrov@mail.ru", "89999999992"));
+        clientList.add(new Client(3L, "Павел Павлов", "pavlov@mail.ru", "89999999993"));
         clientDAO.saveCollection(clientList);
 
         List<City> cityList = new ArrayList<>();

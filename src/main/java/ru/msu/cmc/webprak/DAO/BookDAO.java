@@ -16,6 +16,7 @@ public interface BookDAO extends CommonDAO<Book, Long> {
     List<Book> searchBooks(Filter filter);
     List<Genre> getBookGenres(Long bookId);
     List<Author> getBookAuthors(Long bookId);
+    Book getBookById(Long id);
 
     @Builder
     @Getter

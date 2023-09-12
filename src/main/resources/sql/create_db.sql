@@ -1,8 +1,6 @@
 drop schema public cascade;
 create schema public;
 
-
-
 create table if not exists genre (
     genre_id            serial primary key,
     genre_name          text not null
@@ -76,5 +74,3 @@ create table if not exists order_history_rel (
     client_id           integer not null references client(client_id) on delete cascade,
     order_id            integer not null references "order"(order_id) on delete cascade
 );
-
-delete from client where client_id>3

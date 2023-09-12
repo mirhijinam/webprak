@@ -6,13 +6,11 @@ import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Repository;
 import org.hibernate.Session;
 
-import ru.msu.cmc.webprak.DAO.CityDAO;
-import ru.msu.cmc.webprak.DAO.ClientDAO;
-import ru.msu.cmc.webprak.DAO.OrderHistoryDAO;
-import ru.msu.cmc.webprak.DAO.ClientCityRelDAO;
+import ru.msu.cmc.webprak.DAO.*;
 import ru.msu.cmc.webprak.models.*;
 
 import jakarta.persistence.criteria.*;
+import ru.msu.cmc.webprak.models.Order;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +25,14 @@ public class ClientDAOImpl extends CommonDAOImpl<Client, Long> implements Client
     }
 
     @Autowired
+    private OrderDAO orderDAO = new OrderDAOImpl();
+    @Autowired
     private OrderHistoryDAO orderHistoryDAO = new OrderHistoryDAOImpl();
     @Autowired
     private ClientCityRelDAO clientCityRelDAO = new ClientCityRelDAOImpl();
     @Autowired
     private CityDAO cityDAO = new CityDAOImpl();
+
 
     @Override
     public List<Client> searchClients(Filter filter) {
@@ -114,6 +115,22 @@ public class ClientDAOImpl extends CommonDAOImpl<Client, Long> implements Client
             }
         }
         return null;
+    }
+
+    @Override
+    public Client getClientById(Long id) {
+        return super.getById(id);
+    }
+
+    @Override
+    public List<Order> getOrdersById(Long id) {
+        List<Order> ret = new ArrayList<>();
+        for (OrderHistory orderHistory : orderHistoryDAO.getAll()) {
+            if (Objects.equals(orderHistory.getClient().getId(), id)) {
+                ret.add(orderHistory.getOrder());
+            }
+        }
+        return ret;
     }
 }
 

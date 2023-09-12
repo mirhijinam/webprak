@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Страница заказа</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        .indent {
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="general :: page-header"> </div>
+
+<div class="indent">
+    <h1>Данные заказа</h1>
+    <table class="table table-bordered table-warning">
+        <tbody>
+        <tr>
+            <th scope="row">ID</th>
+            <td th:text="${order.getId()}"> </td>
+        </tr>
+        <tr>
+            <th scope="row">Статус</th>
+            <td th:text="${order.getOrderStatus()}"> </td>
+        </tr>
+        <tr>
+            <th scope="row">Дата создания</th>
+            <td th:text="${order.getCreationData()}"> </td>
+        </tr>
+        <tr>
+            <th scope="row">Дата доставки</th>
+            <td th:text="${order.getDeliveryData()}"> </td>
+        </tr>
+        <tr>
+            <th scope="row">Цена</th>
+            <td th:text="${order.getPrice()}"> </td>
+        </tr>
+        <tr>
+            <th scope="row">Книги</th>
+            <td>
+                <ul>
+                    <li th:each="book : ${books}" th:text="${book.getBookName()} + ', ' +
+                            ${bookDAO.getBookAuthors(book.getId().toString())[0].getAuthorName()} +
+                            ' - ' + ${book.getPrice()} + ' руб.'"></li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="d-inline-flex">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Изменить статус заказа</button>
+    </div>
+</div>
+
+<div class="indent">
+    <h1>Удаление книг</h1>
+    <form method="post" action="/DeleteBooksFromOrder">
+        <input type="hidden" name="orderId" th:value="${order.getId()}"/>
+        <div class="form-group">
+            <h3>Удаляемые книги и их количество</h3>
+            <ul>
+                <li th:each="book, iterStat : ${orderingBookRelList}">
+                    <label>
+                        <input type="checkbox" name="selectedBooksToDelete" th:value="${book.getId()}" />
+                        <span th:text="${book.book.bookName} + ' - ' + ${book.amount} + ' шт.'"></span>
+                        <input type="number" name="quantityToDelete" th:value="0" min="0" />
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+        <button type="submit">Подтвердить</button>
+    </form>
+
+<div class="modal fade" id="editModal2" tabindex="-1" role="dialog" aria-labelledby="editModalLabel2"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel2">Изменение статуса заказа</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/editOrderStatus">
+                    <input type="hidden" name="orderId" th:value="${order.getId()}"/>
+                    <div class="form-group">
+                        <label for="status">Статус</label>
+                        <select id="status" name="orderStatus" size="1" th:value="${order.getOrderStatus()}" required>
+                            <option value="NEW">Новый</option>
+                            <option value="IN_PROGRESS">В процессе</option>
+                            <option value="FINISHED">Доставлен</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="general :: site-script"></div>
+
+</body>
+</html>

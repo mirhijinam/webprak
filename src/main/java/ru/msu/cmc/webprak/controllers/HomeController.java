@@ -4,6 +4,7 @@ package ru.msu.cmc.webprak.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ru.msu.cmc.webprak.models.Client;
@@ -26,26 +27,33 @@ public class HomeController {
     @Autowired
     private OrderDAO orderDAO;
 
-    @RequestMapping(value={"/", "/clients"})
+    @GetMapping(value={"/", "/clients"})
     public String index(Model model) {
-        List<Client> client = (List<Client>) clientDAO.getAll();
-        model.addAttribute("client", client);
+
+        List<Client> clientList = (List<Client>) clientDAO.getAll();
+        model.addAttribute("clientList", clientList);
         model.addAttribute("clientDAO", clientDAO);
+
         return "clients";
     }
 
     @RequestMapping(value={"/books"})
     public String books(Model model) {
-        List<Book> book = (List<Book>) bookDAO.getAll();
-        model.addAttribute("book", book);
+
+        List<Book> bookList = (List<Book>) bookDAO.getAll();
+        model.addAttribute("bookList", bookList);
         model.addAttribute("bookDAO", bookDAO);
+
         return "books";
     }
 
     @RequestMapping(value={"/orders"})
     public String orders(Model model) {
+
         List<Order> order = (List<Order>) orderDAO.getAll();
-        model.addAttribute("order", order);
+        model.addAttribute("orderList", order);
+        model.addAttribute("bookDAO", orderDAO);
+
         return "orders";
     }
 }

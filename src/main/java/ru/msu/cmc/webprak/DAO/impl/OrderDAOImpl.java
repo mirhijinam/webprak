@@ -2,10 +2,12 @@ package ru.msu.cmc.webprak.DAO.impl;
 
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.hibernate.Session;
 
 import ru.msu.cmc.webprak.DAO.OrderDAO;
+import ru.msu.cmc.webprak.DAO.OrderingBookRelDAO;
 import ru.msu.cmc.webprak.models.Order;
 import ru.msu.cmc.webprak.models.*;
 
@@ -15,6 +17,7 @@ import jakarta.persistence.PersistenceContext;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 @Repository
@@ -25,6 +28,19 @@ public class OrderDAOImpl extends CommonDAOImpl<Order, Long> implements OrderDAO
 
     public OrderDAOImpl() {
         super(Order.class);
+    }
+
+    @Autowired
+    OrderingBookRelDAO orderingBookRelDAO;
+
+    public List<OrderingBookRel> getOrderingBookRelList(Long orderId) {
+        List<OrderingBookRel> ret = new ArrayList<>();
+        for (OrderingBookRel orderingBookRel : orderingBookRelDAO.getAll()) {
+            if (Objects.equals(orderingBookRel.getOrder().getId(), orderId)) {
+                ret.add(orderingBookRel);
+            }
+        }
+        return ret;
     }
 
     public List<Order> searchOrders(Filter filter) {
@@ -58,4 +74,3 @@ public class OrderDAOImpl extends CommonDAOImpl<Order, Long> implements OrderDAO
         }
     }
 }
-

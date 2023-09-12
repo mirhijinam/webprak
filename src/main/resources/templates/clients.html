@@ -53,7 +53,6 @@
         </div>
     </form>
     <br>
-
     <table class="table table-bordered table-warning">
         <thead class="thead-dark">
         <tr>
@@ -70,7 +69,9 @@
         </tr>
         <tr th:each="clnt : ${clientList}">
             <td>
-                <span th:text="${clnt.getId()}"> </span>
+                <a th:href="'/clientDetails?clientId=' + ${clnt.getId()}">
+                    <span th:text="${clnt.getId()}"> </span>
+                </a>
             </td>
             <td>
                 <span th:text="${clnt.getClientName()}"> </span>
@@ -84,7 +85,6 @@
             <td>
                 <span th:text="${clnt.getEmail()}"> </span>
             </td>
-
         </tr>
         </tbody>
     </table>

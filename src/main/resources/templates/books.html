@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
+        <title>Список книг</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+                               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <style>
+.indent {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 20px;
+}
+    .subtable {
+        background-color: #f0f0f0;
+    }
+    .subtable td {
+        border: 1px solid #cccccc;
+    }
+        </style>
+    </head>
+    <body>
+        <div th:replace="general :: page-header"> </div>
+
+        <div class="indent">
+            <br>
+            <form method="get" action="/searchBook">
+                <div class="form-row">
+                    <div class="col">
+                        <input type="number" class="form-control" placeholder="ID" name="id">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Название" name="name">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Авторы" name="author">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Жанры" name="genre">
+                    </div>
+                    <div class="form-group">
+                        <label for="isAvailable">В наличии:</label>
+                        <select id="isAvailable" name="isAvailable" class="form-control" size="1">
+                            <option value="yes">yes</option>
+                            <option value="no">no</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Цена" name="price">
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Поиск</button>
+                    </div>
+                </div>
+            </form>
+            <br>
+
+            <table class="table table-bordered table-warning">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Авторы</th>
+                        <th scope="col">Жанры</th>
+                        <th scope="col">Цена</th>
+                        <th scope="col">В наличии</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:if="${bookList == null || bookList.isEmpty()}">
+                        <td colspan="6">Книги не найдены.</td>
+                    </tr>
+                    <tr th:each="book : ${bookList}">
+                        <td>
+                            <a th:href="'/bookDetails?bookId=' + ${book.getId()}">
+                                <span th:text="${book.getId()}"> </span>
+                            </a>
+                        </td>
+                        <td>
+                            <span th:text="${book.getBookName()}"> </span>
+                        </td>
+                        <td>
+                            <span th:each="author, iterStat : ${bookDAO.getBookAuthors(book.getId())}">
+                                <span th:text="${author.getAuthorName()}"></span>
+                                <span th:if="${not iterStat.last}">, </span>
+                            </span>
+                        </td>
+                        <td>
+                            <span th:each="genre, iterStat : ${bookDAO.getBookGenres(book.getId())}">
+                                <span th:text="${genre.getGenreName()}"></span>
+                                <span th:if="${not iterStat.last}">, </span>
+                            </span>
+                        </td>
+                        <td>
+                            <span th:text="${book.getPrice()}"> </span>
+                        </td>
+                        <td>
+                            <span th:text="${book.getIsAvailable()}"> </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div th:replace="~{general :: site-script}"></div>
+
+    </body>
+</html>
