@@ -75,18 +75,8 @@
                         <div class="form-group">
                             <label for="name">Название</label>
                             <input type="text" class="form-control" id="name" name="name"
-                                   th:value="${book.getBookName()}" required>
+                                   th:value="${book.getName()}" required>
                         </div>
-<!--                        <div class="form-group">-->
-<!--                            <label for="authors">Авторы</label>-->
-<!--                            <input type="text" class="form-control" id="authors" name="authors"-->
-<!--                                   th:value="${bookDAO.getBookAuthors(book.getId())}" required>-->
-<!--                        </div>-->
-<!--                        <div class="form-group">-->
-<!--                            <label for="genre">Жанры</label>-->
-<!--                            <input type="text" class="form-control" id="genre" name="genre"-->
-<!--                                   th:value="${bookDAO.getBookGenres(book.getId())}" required>-->
-<!--                        </div>-->
                         <div class="form-group">
                             <label for="price">Цена</label>
                             <input type="text" class="form-control" id="price" name="price"
@@ -101,7 +91,7 @@
                             <label for="numOfCopies">Количество копий</label>
                             <input type="text" class="form-control" id="numOfCopies" name="numOfCopies"
                                    th:value="${book.getNumOfCopies()}" required>
-                        </div>
+<!--                        </div>-->
                         <button type="submit" class="btn btn-primary">Сохранить изменения</button>
                     </form>
                 </div>
@@ -109,6 +99,6 @@
         </div>
     </div>
 </div>
-
+<div th:replace="general :: site-script"></div>
 </body>
 </html>

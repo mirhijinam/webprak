@@ -158,6 +158,8 @@ public class BookController {
 
         bookDAO.update(book);
 
+        redirectAttributes.addFlashAttribute("message", "Книга успешно обновлена");
+
         return "redirect:/books";
     }
 }

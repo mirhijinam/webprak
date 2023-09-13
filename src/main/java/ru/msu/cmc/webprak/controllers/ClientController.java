@@ -77,7 +77,8 @@ public class ClientController {
     }
 
     @GetMapping("/clientDetails")
-    public String PersonPage(@RequestParam(name = "clientId") Long clientId, Model model) {
+    public String PersonPage(@RequestParam(name = "clientId") Long clientId,
+                             Model model) {
 
         Client client = clientDAO.getById(clientId);
         List<OrderHistory> orderHistoryList = clientDAO.getOrderHistory(clientId);
