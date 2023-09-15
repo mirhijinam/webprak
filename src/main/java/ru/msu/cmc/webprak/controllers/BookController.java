@@ -153,8 +153,18 @@ public class BookController {
 
         book.setBookName(name);
         book.setPrice(price);
-        book.setIsAvailable(isAvailable);
-        book.setNumOfCopies(numOfCopies);
+        if (numOfCopies == 0) {
+            book.setIsAvailable("no");
+            book.setNumOfCopies(numOfCopies);
+        }
+        else if (isAvailable.equals("no")) {
+            book.setIsAvailable("no");
+            book.setNumOfCopies(0);
+        }
+        else {
+            book.setIsAvailable("yes");
+            book.setNumOfCopies(numOfCopies);
+        }
 
         bookDAO.update(book);
 
