@@ -1,0 +1,547 @@
+{
+  "id": "ba45de6e-90b7-405b-b836-6771584f14ed",
+  "version": "2.0",
+  "name": "clients",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "c6c67b6b-c2bb-4f95-b9aa-2cf30ed95512",
+    "name": "addClient",
+    "commands": [{
+      "id": "a2c1f1de-f71f-439b-957c-d72ddc16f289",
+      "comment": "",
+      "command": "open",
+      "target": "/clients",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "919ec044-e1d2-41a1-8146-45e888d0463b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1512x944",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ddbdd36b-a800-4543-adf1-fbef7868b8cc",
+      "comment": "",
+      "command": "click",
+      "target": "id=addPersonButton",
+      "targets": [
+        ["id=addPersonButton", "id"],
+        ["css=#addPersonButton", "css:finder"],
+        ["xpath=//button[@id='addPersonButton']", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Добавить клиента')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0b23d054-139a-406a-94f7-08c164fa7743",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Иванов Иван Иванович"
+    }, {
+      "id": "a0fbc584-4d2c-4884-947d-0fb80eb37b55",
+      "comment": "",
+      "command": "select",
+      "target": "id=city",
+      "targets": [],
+      "value": "label=ДС2"
+    }, {
+      "id": "869fb9e7-8f98-41b0-98c6-78a1805349da",
+      "comment": "",
+      "command": "click",
+      "target": "css=option:nth-child(2)",
+      "targets": [
+        ["css=option:nth-child(2)", "css:finder"],
+        ["xpath=//option[@value='ДС2']", "xpath:attributes"],
+        ["xpath=//select[@id='city']/option[2]", "xpath:idRelative"],
+        ["xpath=//option[2]", "xpath:position"],
+        ["xpath=//option[contains(.,'ДС2')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5f65342a-9de5-4ee4-afb5-fd9d01b4601f",
+      "comment": "",
+      "command": "type",
+      "target": "id=street",
+      "targets": [
+        ["id=street", "id"],
+        ["name=street", "name"],
+        ["css=#street", "css:finder"],
+        ["xpath=//input[@id='street']", "xpath:attributes"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Улица Вторая"
+    }, {
+      "id": "e255af1a-3ce3-4cdb-b190-bae71147e00f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-group:nth-child(4)",
+      "targets": [
+        ["css=.form-group:nth-child(4)", "css:finder"],
+        ["xpath=//div[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "27e5a937-dd60-469c-8c32-972b698f2fb4",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "ivanov@hh.ru"
+    }, {
+      "id": "75be9c66-796a-4875-a699-3a3b7f02ba58",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "89891111111"
+    }, {
+      "id": "3f144311-0534-4b6f-925b-484d13169235",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Добавить')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d9b7e6b-fbde-4676-b7b8-737ff3813fc8",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=td:nth-child(2) > span",
+      "targets": [],
+      "value": "Иванов Иван Иванович"
+    }, {
+      "id": "6689a503-61c7-49b5-aac7-e90b0cda28ec",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=td:nth-child(3) > span",
+      "targets": [],
+      "value": "ДС2"
+    }, {
+      "id": "9291e7b3-7c24-4ea1-94d7-0d88cda32949",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=td:nth-child(4) > span",
+      "targets": [],
+      "value": "89891111111"
+    }, {
+      "id": "970c8b05-d6c2-4126-b968-090a32bb6bb6",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=td:nth-child(5) > span",
+      "targets": [],
+      "value": "ivanov@hh.ru"
+    }]
+  }, {
+    "id": "abbae3dc-39d0-4e20-8cf5-58df18291744",
+    "name": "newClientPage",
+    "commands": [{
+      "id": "b631c80a-edb6-4fcf-af58-09e8ba5cf06b",
+      "comment": "",
+      "command": "click",
+      "target": "css=a > span",
+      "targets": [
+        ["css=a > span", "css:finder"],
+        ["xpath=//a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'13')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "461bb5ce-e586-49f7-8a1f-7efb5453fec6",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) > td",
+      "targets": [],
+      "value": "Иванов Иван Иванович"
+    }, {
+      "id": "85e325e5-2daa-4fd3-bc61-e70ec722cb26",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(3) > td",
+      "targets": [],
+      "value": "ДС2"
+    }, {
+      "id": "bfe375b4-53be-42da-8a7a-7947db8e2eb9",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td",
+      "targets": [],
+      "value": "Улица Вторая"
+    }]
+  }, {
+    "id": "a8631feb-fea1-4a15-8171-fb16f2a7aa4c",
+    "name": "editClient",
+    "commands": [{
+      "id": "54432435-dbae-40f3-9b67-521d9ed8839b",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d6cdcb75-6c5f-42a2-af14-8222ab8adeb1",
+      "comment": "",
+      "command": "click",
+      "target": "css=a > span",
+      "targets": [
+        ["css=a > span", "css:finder"],
+        ["xpath=//a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'13')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9071f23b-4277-4508-9e40-f93d6765cb08",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.btn:nth-child(1)",
+      "targets": [
+        ["css=.btn:nth-child(1)", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Изменить')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "05ed116d-62a9-420d-bf8a-eaa670ada1aa",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.btn:nth-child(1)",
+      "targets": [
+        ["css=.btn:nth-child(1)", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Изменить')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "46c40f59-8611-41c2-b73b-dd2ba5c37dc7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(1)",
+      "targets": [
+        ["css=.btn:nth-child(1)", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Изменить')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c959938a-a538-4a3a-a083-6347cdafcb20",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//div[@id='editModal']/div/div/div[2]/form/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7e97adb8-d927-4f49-9214-80c055e6b28f",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//div[@id='editModal']/div/div/div[2]/form/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Иванов Иван Иваныч"
+    }, {
+      "id": "c08254e6-9941-4801-a6ed-c15d6e1f669b",
+      "comment": "",
+      "command": "select",
+      "target": "id=city",
+      "targets": [],
+      "value": "label=ДС3"
+    }, {
+      "id": "86549cd0-0cfd-4341-98ae-be56266fb4c3",
+      "comment": "",
+      "command": "click",
+      "target": "css=option:nth-child(3)",
+      "targets": [
+        ["css=option:nth-child(3)", "css:finder"],
+        ["xpath=//option[@value='ДС3']", "xpath:attributes"],
+        ["xpath=//select[@id='city']/option[3]", "xpath:idRelative"],
+        ["xpath=//option[3]", "xpath:position"],
+        ["xpath=//option[contains(.,'ДС3')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "74d8c21f-a71a-4815-9263-6e419a1c59f2",
+      "comment": "",
+      "command": "click",
+      "target": "id=street",
+      "targets": [
+        ["id=street", "id"],
+        ["name=street", "name"],
+        ["css=#street", "css:finder"],
+        ["xpath=//input[@id='street']", "xpath:attributes"],
+        ["xpath=//div[@id='editModal']/div/div/div[2]/form/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fa7d410e-0e0a-4dfa-9344-dcc1d8ce739f",
+      "comment": "",
+      "command": "type",
+      "target": "id=street",
+      "targets": [
+        ["id=street", "id"],
+        ["name=street", "name"],
+        ["css=#street", "css:finder"],
+        ["xpath=//input[@id='street']", "xpath:attributes"],
+        ["xpath=//div[@id='editModal']/div/div/div[2]/form/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "Улица Третья"
+    }, {
+      "id": "5d76d5d2-bf45-4905-a4b4-cf3ace3fae33",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='editModal']/div/div/div[2]/form/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aa039b02-ceec-49ce-8e85-e36808ec5db3",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='editModal']/div/div/div[2]/form/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "ivanov@gg.ru"
+    }, {
+      "id": "7061872e-af79-4ad9-b804-26b23572badb",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//div[@id='editModal']/div/div/div[2]/form/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1b15fae8-bbcc-4a9a-a651-f863347faeaf",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//div[@id='editModal']/div/div/div[2]/form/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": "89891111112"
+    }, {
+      "id": "b06cda81-204e-40bc-8e8d-41939895ba71",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-group:nth-child(6)",
+      "targets": [
+        ["css=.form-group:nth-child(6)", "css:finder"],
+        ["xpath=//div[@id='editModal']/div/div/div[2]/form/div[5]", "xpath:idRelative"],
+        ["xpath=//div[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6a49d771-1df6-4d63-b1b9-36ec9b702dbb",
+      "comment": "",
+      "command": "//assertText",
+      "target": "css=tr:nth-child(2) > td",
+      "targets": [],
+      "value": "Иванов Иван Иваныч"
+    }, {
+      "id": "f3af9186-7cbb-498a-8001-73a9e65fe26d",
+      "comment": "",
+      "command": "//assertText",
+      "target": "css=tr:nth-child(3) > td",
+      "targets": [],
+      "value": "ДС3"
+    }, {
+      "id": "ff72c971-f5bb-4707-a309-611772c7bbd3",
+      "comment": "",
+      "command": "//assertText",
+      "target": "css=tr:nth-child(4) > td",
+      "targets": [],
+      "value": "Улица Третья"
+    }, {
+      "id": "f8f506d9-4922-4f18-a654-c6ca79aa5f4d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(7)",
+      "targets": [
+        ["css=.close > span", "css:finder"],
+        ["xpath=//div[@id='editModal']/div/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//div/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'×')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f2681a1e-5d09-4179-9da2-4950168a7d59",
+      "comment": "",
+      "command": "click",
+      "target": "id=clients",
+      "targets": [
+        ["id=clients", "id"],
+        ["linkText=Список клиентов", "linkText"],
+        ["css=#clients", "css:finder"],
+        ["xpath=//a[contains(text(),'Список клиентов')]", "xpath:link"],
+        ["xpath=//a[@id='clients']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/clients')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Список клиентов')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "699590b5-bc14-4a8c-80a2-38273a77bf3a",
+      "comment": "",
+      "command": "click",
+      "target": "css=a > span",
+      "targets": [
+        ["css=a > span", "css:finder"],
+        ["xpath=//a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'14')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7b199373-511e-41c9-a881-d0ef15ae5cc1",
+      "comment": "",
+      "command": "click",
+      "target": "id=clients",
+      "targets": [
+        ["id=clients", "id"],
+        ["linkText=Список клиентов", "linkText"],
+        ["css=#clients", "css:finder"],
+        ["xpath=//a[contains(text(),'Список клиентов')]", "xpath:link"],
+        ["xpath=//a[@id='clients']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/clients')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Список клиентов')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d3108c33-60a9-4a39-b7e8-09158756ff6e",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=td:nth-child(4) > span",
+      "targets": [],
+      "value": "89891111112"
+    }, {
+      "id": "ad2343df-fda5-40b8-9612-b829d296b25a",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=td:nth-child(5) > span",
+      "targets": [],
+      "value": "ivanov@gg.ru"
+    }]
+  }, {
+    "id": "e1a2b89a-4b54-45a5-941f-d330baf8b560",
+    "name": "deleteClient",
+    "commands": [{
+      "id": "d746baf3-a0c8-4976-a69a-e5d3378b1fc7",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e28e9b48-f042-425e-8123-367443d1939a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1043x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2b6ef9af-d6da-43f4-81e1-6245b68e88c1",
+      "comment": "",
+      "command": "click",
+      "target": "css=a > span",
+      "targets": [
+        ["css=a > span", "css:finder"],
+        ["xpath=//a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'13')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "47cff356-b58e-47ff-9096-5594cbf6820a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-danger",
+      "targets": [
+        ["css=.btn-danger", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Удалить')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2fe9174b-733b-406e-886e-5466926621fb",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=td",
+      "targets": [],
+      "value": "Клиенты не найдены."
+    }]
+  }],
+  "suites": [{
+    "id": "f56283fb-c40c-4197-8910-c92fef36af30",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["c6c67b6b-c2bb-4f95-b9aa-2cf30ed95512"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}

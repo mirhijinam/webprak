@@ -1,0 +1,378 @@
+{
+  "id": "13e7c75e-7935-42fc-9179-1a757b68e58d",
+  "version": "2.0",
+  "name": "books",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "fe46fcb2-2994-4885-b4c0-09a10dad7b68",
+    "name": "bookPage",
+    "commands": [{
+      "id": "1a82c488-c4f7-4965-988d-c0cced4a747f",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f5192784-c978-4bce-97be-b09d2060a0b7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1472x905",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8317fa99-aefe-4509-8cb7-38b56199da7b",
+      "comment": "",
+      "command": "click",
+      "target": "id=books",
+      "targets": [
+        ["id=books", "id"],
+        ["linkText=Список книг", "linkText"],
+        ["css=#books", "css:finder"],
+        ["xpath=//a[contains(text(),'Список книг')]", "xpath:link"],
+        ["xpath=//a[@id='books']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/books')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Список книг')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a9cea5fd-557c-42b9-96fb-3af11f357c34",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) a > span",
+      "targets": [
+        ["css=tr:nth-child(1) a > span", "css:finder"],
+        ["xpath=//a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'3')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3afb201a-ec34-46a3-a82c-7b59d3485ea6",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) > td",
+      "targets": [],
+      "value": "Руслан и Людмила"
+    }, {
+      "id": "b3aa4d40-f63e-4544-aec9-0c1dbe39dd81",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(3) > td",
+      "targets": [],
+      "value": "Автор1"
+    }, {
+      "id": "55b2489f-f339-4704-8ff0-faab9c0a3995",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td",
+      "targets": [
+        ["css=tr:nth-child(2) > td", "css:finder"],
+        ["xpath=//tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Книга3')]", "xpath:innerText"]
+      ],
+      "value": "Жанр1"
+    }, {
+      "id": "75f542c0-9596-4641-9669-1ea490957f1e",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(5) > td",
+      "targets": [
+        ["css=tr:nth-child(2) > td", "css:finder"],
+        ["xpath=//tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Книга3')]", "xpath:innerText"]
+      ],
+      "value": "100"
+    }, {
+      "id": "294a5b15-2134-45de-8d9c-79ffcd3c7a32",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(6) > td",
+      "targets": [
+        ["css=tr:nth-child(2) > td", "css:finder"],
+        ["xpath=//tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Книга3')]", "xpath:innerText"]
+      ],
+      "value": "yes"
+    }, {
+      "id": "6b1817ec-eb01-4d16-aab3-3acd664131c7",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(7) > td",
+      "targets": [
+        ["css=tr:nth-child(2) > td", "css:finder"],
+        ["xpath=//tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Книга3')]", "xpath:innerText"]
+      ],
+      "value": "15"
+    }]
+  }, {
+    "id": "27c42f90-2700-4cb9-a40c-e8e9370d2cc5",
+    "name": "bookEdit",
+    "commands": [{
+      "id": "ea405f0a-acfb-4238-82de-33334c0e645f",
+      "comment": "",
+      "command": "open",
+      "target": "/bookDetails?bookId=2",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "02b7567d-b9d4-4430-851c-1fb8885b30cd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1472x905",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6ebea3d7-fa85-4904-9cde-98c1e56a8364",
+      "comment": "",
+      "command": "click",
+      "target": "id=books",
+      "targets": [
+        ["id=books", "id"],
+        ["linkText=Список книг", "linkText"],
+        ["css=#books", "css:finder"],
+        ["xpath=//a[contains(text(),'Список книг')]", "xpath:link"],
+        ["xpath=//a[@id='books']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/books')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Список книг')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c32371f3-d947-4232-bc64-3754cb5c7597",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) a > span",
+      "targets": [
+        ["css=tr:nth-child(3) a > span", "css:finder"],
+        ["xpath=//tr[3]/td/a/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6f66464a-3000-4cc0-9f39-efb23914871a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(1)",
+      "targets": [
+        ["css=.btn:nth-child(1)", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Изменить')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1215bd03-4503-4ba1-beff-25d744022875",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.btn:nth-child(1)",
+      "targets": [
+        ["css=.btn:nth-child(1)", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Изменить')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f005a960-e7ae-4267-8f4f-409524097537",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.btn:nth-child(1)",
+      "targets": [
+        ["css=.btn:nth-child(1)", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Изменить')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "46db499d-6e63-4bda-9e4d-2b5a3604e5a7",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//div[@id='editModal']/div/div/div[2]/form/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "926a46d3-e944-453c-a3c4-8da991ef65b3",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//div[@id='editModal']/div/div/div[2]/form/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Книга26"
+    }, {
+      "id": "064b1399-b20b-4ff7-bfbb-8ac59e5b7329",
+      "comment": "",
+      "command": "click",
+      "target": "id=price",
+      "targets": [
+        ["id=price", "id"],
+        ["name=price", "name"],
+        ["css=#price", "css:finder"],
+        ["xpath=//input[@id='price']", "xpath:attributes"],
+        ["xpath=//div[@id='editModal']/div/div/div[2]/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "76fa830d-bc82-4e1e-89f6-454abd5b666b",
+      "comment": "",
+      "command": "type",
+      "target": "id=price",
+      "targets": [
+        ["id=price", "id"],
+        ["name=price", "name"],
+        ["css=#price", "css:finder"],
+        ["xpath=//input[@id='price']", "xpath:attributes"],
+        ["xpath=//div[@id='editModal']/div/div/div[2]/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "206"
+    }, {
+      "id": "213dec44-f7ec-4a84-bcfb-9fce3ffaf0a6",
+      "comment": "",
+      "command": "click",
+      "target": "id=numOfCopies",
+      "targets": [
+        ["id=numOfCopies", "id"],
+        ["name=numOfCopies", "name"],
+        ["css=#numOfCopies", "css:finder"],
+        ["xpath=//input[@id='numOfCopies']", "xpath:attributes"],
+        ["xpath=//div[@id='editModal']/div/div/div[2]/form/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0275cb2c-2b88-49ef-b311-a35bc88440c5",
+      "comment": "",
+      "command": "type",
+      "target": "id=numOfCopies",
+      "targets": [
+        ["id=numOfCopies", "id"],
+        ["name=numOfCopies", "name"],
+        ["css=#numOfCopies", "css:finder"],
+        ["xpath=//input[@id='numOfCopies']", "xpath:attributes"],
+        ["xpath=//div[@id='editModal']/div/div/div[2]/form/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "16"
+    }, {
+      "id": "08ec5f7c-83c0-4eaf-9654-316c7bd3c71c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(6)",
+      "targets": [
+        ["css=.btn:nth-child(6)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='editModal']/div/div/div[2]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Сохранить изменения')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fecb0967-65d4-4de4-a3e1-c3ea1fe86b57",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(3) > td:nth-child(2) > span",
+      "targets": [],
+      "value": "Книга26"
+    }, {
+      "id": "d3d141d5-310d-4671-8d2c-9c2d5c9d77e5",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) a > span",
+      "targets": [
+        ["css=tr:nth-child(3) a > span", "css:finder"],
+        ["xpath=//tr[3]/td/a/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2b9393db-e98d-4389-b9ac-0157f54b5c3d",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) > td",
+      "targets": [],
+      "value": "Книга26"
+    }, {
+      "id": "e23c58df-cea0-4a0b-8a89-8cbab08148d8",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(3) span",
+      "targets": [
+        ["css=tr:nth-child(3) span", "css:finder"],
+        ["xpath=//td/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Автор2')]", "xpath:innerText"]
+      ],
+      "value": "Автор2"
+    }, {
+      "id": "e32762cb-ae2e-4ddb-80da-09b487fdcd3a",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) > td:nth-child(2) > span:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(4) > td:nth-child(2) > span:nth-child(1)", "css:finder"],
+        ["xpath=//tr[4]/td/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Жанр2')]", "xpath:innerText"]
+      ],
+      "value": "Жанр2"
+    }, {
+      "id": "47608906-28f3-45c2-b1f6-0f21fcfeb7e6",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(5) > td",
+      "targets": [
+        ["css=tr:nth-child(5) > td", "css:finder"],
+        ["xpath=//tr[5]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'206')]", "xpath:innerText"]
+      ],
+      "value": "206"
+    }, {
+      "id": "233482e7-bcd7-481d-8f50-047d8e3c2fcf",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(6) > td",
+      "targets": [
+        ["css=tr:nth-child(6) > td", "css:finder"],
+        ["xpath=//tr[6]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'yes')]", "xpath:innerText"]
+      ],
+      "value": "yes"
+    }, {
+      "id": "7fe9e55b-7efb-4242-a1b3-07feb444cf9b",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(7) > td",
+      "targets": [
+        ["css=tr:nth-child(7) > td", "css:finder"],
+        ["xpath=//tr[7]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'16')]", "xpath:innerText"]
+      ],
+      "value": "16"
+    }]
+  }],
+  "suites": [{
+    "id": "20d6bfa8-d60b-4132-8f04-2afb69f689b0",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["fe46fcb2-2994-4885-b4c0-09a10dad7b68"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}

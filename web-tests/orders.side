@@ -1,0 +1,500 @@
+{
+  "id": "0ec2a333-baf1-4fc7-adf1-7408816be4de",
+  "version": "2.0",
+  "name": "orders",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "8d4f5b06-d47d-4b69-9fe1-996c22eb15c9",
+    "name": "newOrder",
+    "commands": [{
+      "id": "1292cb49-13c3-44ff-ba4f-8e905731d9b5",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ae3eeab3-0b2f-42fb-b3eb-db3977c0918d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1472x906",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "db823a2b-87ec-43a7-901b-f98b86de8d07",
+      "comment": "",
+      "command": "click",
+      "target": "id=orders",
+      "targets": [
+        ["id=orders", "id"],
+        ["linkText=Список заказов", "linkText"],
+        ["css=#orders", "css:finder"],
+        ["xpath=//a[contains(text(),'Список заказов')]", "xpath:link"],
+        ["xpath=//a[@id='orders']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/orders')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Список заказов')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d3d226f5-a30f-4fdc-a83a-33853ecdb2cd",
+      "comment": "",
+      "command": "click",
+      "target": "id=addOrderButton",
+      "targets": [
+        ["id=addOrderButton", "id"],
+        ["css=#addOrderButton", "css:finder"],
+        ["xpath=//button[@id='addOrderButton']", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Добавить заказ')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e52f22c7-556a-4645-afc8-b400e59c25fc",
+      "comment": "",
+      "command": "click",
+      "target": "name=selectedClient",
+      "targets": [
+        ["name=selectedClient", "name"],
+        ["css=.form-group:nth-child(1) li:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='selectedClient']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dfbc6175-1122-4647-aa6b-70c104796e29",
+      "comment": "",
+      "command": "click",
+      "target": "name=selectedBooks",
+      "targets": [
+        ["name=selectedBooks", "name"],
+        ["css=.form-group:nth-child(2) li:nth-child(1) input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='selectedBooks']", "xpath:attributes"],
+        ["xpath=//div[2]/ul/li/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e10eddd8-94e1-4e26-8200-d7e63fc1ff0d",
+      "comment": "",
+      "command": "click",
+      "target": "name=bookQuantities",
+      "targets": [
+        ["name=bookQuantities", "name"],
+        ["css=li:nth-child(1) input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='bookQuantities']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4a005ccc-84d3-42da-a139-ddb2e859c4c3",
+      "comment": "",
+      "command": "type",
+      "target": "name=bookQuantities",
+      "targets": [
+        ["name=bookQuantities", "name"],
+        ["css=li:nth-child(1) input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='bookQuantities']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "2"
+    }, {
+      "id": "36ebd618-b23c-469e-ad23-6ea444bc556b",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(2) input:nth-child(3)",
+      "targets": [
+        ["css=li:nth-child(2) input:nth-child(3)", "css:finder"],
+        ["xpath=(//input[@name='bookQuantities'])[2]", "xpath:attributes"],
+        ["xpath=//li[2]/label/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5bfb6667-33b7-4c96-893c-ebff0b5051d6",
+      "comment": "",
+      "command": "type",
+      "target": "css=li:nth-child(2) input:nth-child(3)",
+      "targets": [
+        ["css=li:nth-child(2) input:nth-child(3)", "css:finder"],
+        ["xpath=(//input[@name='bookQuantities'])[2]", "xpath:attributes"],
+        ["xpath=//li[2]/label/input[2]", "xpath:position"]
+      ],
+      "value": "3"
+    }, {
+      "id": "2bf9ef80-977b-40d9-93c4-25f1e50ba741",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-group:nth-child(2) li:nth-child(2) input:nth-child(1)",
+      "targets": [
+        ["css=.form-group:nth-child(2) li:nth-child(2) input:nth-child(1)", "css:finder"],
+        ["xpath=(//input[@name='selectedBooks'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/ul/li[2]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3a615e3e-c275-416c-b9f9-894454fd7f98",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(3)",
+      "targets": [
+        ["css=button:nth-child(3)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Подтвердить')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a354e92e-dfc9-4238-9a5d-daf2991eba6a",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=td:nth-child(2) > span",
+      "targets": [
+        ["css=td:nth-child(2) > span", "css:finder"],
+        ["xpath=//td[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'NEW')]", "xpath:innerText"]
+      ],
+      "value": "NEW"
+    }, {
+      "id": "7d0d3a22-51bf-4d61-bf40-262dfbe8f530",
+      "comment": "",
+      "command": "click",
+      "target": "css=a > span",
+      "targets": [
+        ["css=a > span", "css:finder"],
+        ["xpath=//a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'23')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0ea261ca-0fb6-4baa-bc3b-da73766791e4",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=td li:nth-child(1)",
+      "targets": [],
+      "value": "Руслан и Людмила, Автор1 - 100 руб."
+    }, {
+      "id": "34f5a925-673d-4204-96b2-7d5969d57461",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=td li:nth-child(2)",
+      "targets": [
+        ["css=td li:nth-child(2)", "css:finder"],
+        ["xpath=//td/ul/li[2]", "xpath:position"],
+        ["xpath=//li[contains(.,'Книга3, Автор3 - 300 руб.')]", "xpath:innerText"]
+      ],
+      "value": "Книга3, Автор3 - 300 руб."
+    }, {
+      "id": "cf84a97c-879a-43dc-b95d-845a30d67410",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(3) > td",
+      "targets": [
+        ["css=tr:nth-child(3) > td", "css:finder"],
+        ["xpath=//tr[3]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'2023-09-27 00:00:00.0')]", "xpath:innerText"]
+      ],
+      "value": "2023-09-27 00:00:00.0"
+    }]
+  }, {
+    "id": "ab157e85-3bcd-4353-a69a-a14a884df428",
+    "name": "editStatusOrder",
+    "commands": [{
+      "id": "64ea9d14-027f-4ed7-8a0b-99ba805920b9",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c362d35d-401e-48ae-a930-acda52a63599",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1472x906",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f5da72e3-5bc5-4b0c-ad52-f25c006222a5",
+      "comment": "",
+      "command": "click",
+      "target": "id=orders",
+      "targets": [
+        ["id=orders", "id"],
+        ["linkText=Список заказов", "linkText"],
+        ["css=#orders", "css:finder"],
+        ["xpath=//a[contains(text(),'Список заказов')]", "xpath:link"],
+        ["xpath=//a[@id='orders']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/orders')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Список заказов')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "21694e81-4fa3-41b1-a319-ab761ec03218",
+      "comment": "",
+      "command": "click",
+      "target": "css=a > span",
+      "targets": [
+        ["css=a > span", "css:finder"],
+        ["xpath=//a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'26')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a776415f-b9af-497c-bac8-9eac6eafd544",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(1)",
+      "targets": [
+        ["css=.btn:nth-child(1)", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Изменить статус заказа')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5bdce5d0-da3d-44b8-8c45-ae9d87a1d86b",
+      "comment": "",
+      "command": "select",
+      "target": "id=status",
+      "targets": [],
+      "value": "label=В процессе"
+    }, {
+      "id": "c5f760c5-6096-46f6-a487-5e93b2b5402d",
+      "comment": "",
+      "command": "click",
+      "target": "css=option:nth-child(2)",
+      "targets": [
+        ["css=option:nth-child(2)", "css:finder"],
+        ["xpath=//option[@value='IN_PROGRESS']", "xpath:attributes"],
+        ["xpath=//select[@id='status']/option[2]", "xpath:idRelative"],
+        ["xpath=//option[2]", "xpath:position"],
+        ["xpath=//option[contains(.,'В процессе')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6c3aac27-e8ff-4aac-84dd-72a57286ff29",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(3)",
+      "targets": [
+        ["css=.btn:nth-child(3)", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='editModal']/div/div/div[2]/form/button", "xpath:idRelative"],
+        ["xpath=//div/div[2]/form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Сохранить изменения')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fb632368-3740-4197-9ecd-05cf70178881",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) > td",
+      "targets": [],
+      "value": "IN_PROGRESS"
+    }]
+  }, {
+    "id": "834fce1d-8813-4f64-b807-22c3bffe39de",
+    "name": "deleteBooks",
+    "commands": [{
+      "id": "d27e6abf-66a5-4e89-85e5-300661c68a22",
+      "comment": "",
+      "command": "open",
+      "target": "/orders",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "69ec0917-8018-48b5-8afb-3bbead436a21",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1472x906",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9138e05d-e56b-4b0a-a66b-50014b4124dd",
+      "comment": "",
+      "command": "click",
+      "target": "id=orders",
+      "targets": [
+        ["id=orders", "id"],
+        ["linkText=Список заказов", "linkText"],
+        ["css=#orders", "css:finder"],
+        ["xpath=//a[contains(text(),'Список заказов')]", "xpath:link"],
+        ["xpath=//a[@id='orders']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/orders')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Список заказов')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9302dc2c-3842-4b4d-9985-e21d1949d1df",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) a > span",
+      "targets": [
+        ["css=tr:nth-child(2) a > span", "css:finder"],
+        ["xpath=//tr[2]/td/a/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3fa15a49-40db-4d6a-b1b7-53c211c45e4f",
+      "comment": "",
+      "command": "click",
+      "target": "name=quantityToDelete",
+      "targets": [
+        ["name=quantityToDelete", "name"],
+        ["css=li:nth-child(1) input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='quantityToDelete']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "02466dab-117e-4428-b9b0-3ca20b1c3083",
+      "comment": "",
+      "command": "type",
+      "target": "name=quantityToDelete",
+      "targets": [
+        ["name=quantityToDelete", "name"],
+        ["css=li:nth-child(1) input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='quantityToDelete']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "de7beee0-9ee2-4ca6-9b81-c897a51d5ace",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(2) input:nth-child(3)",
+      "targets": [
+        ["css=li:nth-child(2) input:nth-child(3)", "css:finder"],
+        ["xpath=(//input[@name='quantityToDelete'])[2]", "xpath:attributes"],
+        ["xpath=//li[2]/label/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ea1a1100-1131-48ff-9f6f-a5cc11124b7d",
+      "comment": "",
+      "command": "type",
+      "target": "css=li:nth-child(2) input:nth-child(3)",
+      "targets": [
+        ["css=li:nth-child(2) input:nth-child(3)", "css:finder"],
+        ["xpath=(//input[@name='quantityToDelete'])[2]", "xpath:attributes"],
+        ["xpath=//li[2]/label/input[2]", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "10fbfead-3f05-46ab-a989-df947b84907b",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(3) input:nth-child(3)",
+      "targets": [
+        ["css=li:nth-child(3) input:nth-child(3)", "css:finder"],
+        ["xpath=(//input[@name='quantityToDelete'])[3]", "xpath:attributes"],
+        ["xpath=//li[3]/label/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "475e1148-37c7-4c4c-88e5-5f7a0e6c87d3",
+      "comment": "",
+      "command": "type",
+      "target": "css=li:nth-child(3) input:nth-child(3)",
+      "targets": [
+        ["css=li:nth-child(3) input:nth-child(3)", "css:finder"],
+        ["xpath=(//input[@name='quantityToDelete'])[3]", "xpath:attributes"],
+        ["xpath=//li[3]/label/input[2]", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "5ded4c8e-38ac-4084-9b11-fe6a373558b5",
+      "comment": "",
+      "command": "click",
+      "target": "name=selectedBooksToDelete",
+      "targets": [
+        ["name=selectedBooksToDelete", "name"],
+        ["css=li:nth-child(1) input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='selectedBooksToDelete']", "xpath:attributes"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c852155c-b5a6-4b07-9a12-c3ff54b0797a",
+      "comment": "",
+      "command": "click",
+      "target": "css=ul:nth-child(2) > li:nth-child(1)",
+      "targets": [
+        ["css=ul:nth-child(2) > li:nth-child(1)", "css:finder"],
+        ["xpath=//form/div/ul/li", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6ac4db97-208c-42ba-baa6-7b80d95a2f49",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(2) > label",
+      "targets": [
+        ["css=li:nth-child(2) > label", "css:finder"],
+        ["xpath=//li[2]/label", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4560d8a2-0e48-4439-81c8-a36814d1f3c9",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(3) input:nth-child(1)",
+      "targets": [
+        ["css=li:nth-child(3) input:nth-child(1)", "css:finder"],
+        ["xpath=(//input[@name='selectedBooksToDelete'])[3]", "xpath:attributes"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e672432a-9a59-4581-a4e2-b7bfee7809d9",
+      "comment": "",
+      "command": "click",
+      "target": "css=form:nth-child(2) > button",
+      "targets": [
+        ["css=form:nth-child(2) > button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Подтвердить')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b9463cd4-d0d3-4ea1-aaad-83dc33a0f190",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=li:nth-child(1) span",
+      "targets": [
+        ["css=li:nth-child(1) span", "css:finder"],
+        ["xpath=//label/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Книга26 - 3 шт.')]", "xpath:innerText"]
+      ],
+      "value": "Книга26 - 2 шт."
+    }, {
+      "id": "2a66f4ec-df2c-4077-9f19-f4fa150c3d05",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=li:nth-child(2) span",
+      "targets": [],
+      "value": "Руслан и Людмила - 2 шт."
+    }, {
+      "id": "6450c44f-b5e5-46f3-a2fe-e46330d75a81",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=li:nth-child(3) span",
+      "targets": [],
+      "value": "Книга3 - 2 шт."
+    }]
+  }],
+  "suites": [{
+    "id": "78190101-aaef-46d0-b6e6-97b30169c92c",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["8d4f5b06-d47d-4b69-9fe1-996c22eb15c9"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}
