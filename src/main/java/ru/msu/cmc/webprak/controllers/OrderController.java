@@ -256,8 +256,8 @@ public class OrderController {
 
     @PostMapping("/editOrderStatus")
     public String editOrderStatus(RedirectAttributes redirectAttributes,
-                                  @RequestParam Long orderId,
-                                  @RequestParam Order.OrderStatus orderStatus) {
+                                  @RequestParam(name = "orderId") Long orderId,
+                                  @RequestParam(name = "orderStatus") Order.OrderStatus orderStatus) {
 
         Order order = orderDAO.getById(orderId);
 
